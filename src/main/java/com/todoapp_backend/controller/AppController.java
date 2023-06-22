@@ -3,6 +3,8 @@ package com.todoapp_backend.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,27 +27,37 @@ public class AppController {
 
     // localhost:8080/api/todoapp or localhost:8080/api/todoapp/
     @GetMapping(path = {"", "/"})
-    public List<Work> getAllWorks() {
-        return workService.findAll();
+    public ResponseEntity<List<Work>> getAllWorks() {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            workService.findAll()
+        );
     }
 
     @GetMapping(path = "/{id}")
-    public Work getWork(@PathVariable(name = "id") Integer id) throws Exception {
-        return workService.getOne(id);
+    public ResponseEntity<Work> getWork(@PathVariable(name = "id") Integer id) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            workService.getOne(id)
+        );
     }
 
     @PostMapping(path = "")
-    public Work addWork(@RequestBody Work work) {
-        return workService.save(work);
+    public ResponseEntity<Work> addWork(@RequestBody Work work) {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            workService.save(work)
+        );
     }
 
     @PutMapping(path = "/{id}")
-    public Work updateWork(@PathVariable(name = "id") Integer id, @RequestBody Work work) throws Exception {
-        return workService.updateWord(id, work);
+    public ResponseEntity<Work> updateWork(@PathVariable(name = "id") Integer id, @RequestBody Work work) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            workService.updateWord(id, work)
+        );
     }
 
     @DeleteMapping(path = "/{id}")
-    public Work deleteWork(@PathVariable(name = "id") Integer id) throws Exception {
-        return workService.removeWork(id);
+    public ResponseEntity<Work> deleteWork(@PathVariable(name = "id") Integer id) throws Exception {
+        return ResponseEntity.status(HttpStatus.OK).body(
+            workService.removeWork(id)
+        );
     }
 }
