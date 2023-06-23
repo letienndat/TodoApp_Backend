@@ -9,5 +9,5 @@
 -   Chạy file TodoappBackendApplication.java (src/java/com/todoapp_backend) để khởi động server
 -   Như vậy là server backend đã được khởi động, tiếp tục ta muốn hiển thị và sử dụng được ứng dụng thì ta phải chạy project Todo App FrontEnd
 ## Hình ảnh chương trình
-<img src="/image_readme/1.PNG">
+<img src="/image_readme/1.PNG"/>
 ## Goodluck!
